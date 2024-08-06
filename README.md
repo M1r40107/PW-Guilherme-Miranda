@@ -1,2 +1,2 @@
 # PW-Guilherme-Miranda
-Repositório da disciplina 
+Repositório da disciplina Programação para Web 

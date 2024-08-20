@@ -36,10 +36,30 @@ function validaCPF(cpf) {
     return false;
 
    }
-   //Continuar validação
-   //Formatos CPFs válidos:
-   //123.456.789-10
-   //12345678910
 
+   let soma = 0;
+   for (let i = 0; i <= 9; i++){
+    soma = soma + (cpf.charAt(i - 1) * (10 - (i - 1)));
+
+   }
+   console.log(soma);
+   let resto = soma % 11;
+
+   if (resto < 2) {
+    if(cpf.charAt(9) != 0) {
+        alert("CPF inválido!");
+        return false;
+    }
     return true;
+   }
+   
+
+   let digitoVerificador1 = 11 - resto;
+   if (digitoVerificador1 != cpf.charAt(9)) {
+    alert("CPF inválido");
+    return false;
+   }
+
+
+   return true;
 }

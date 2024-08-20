@@ -37,6 +37,9 @@ function validaCPF(cpf) {
 
    }
 
+   cpf2 = cpf.replace("/[.-]/g", "");
+   console.log(cpf2);
+
    let soma = 0;
    for (let i = 0; i <= 9; i++){
     soma = soma + (cpf.charAt(i - 1) * (10 - (i - 1)));
@@ -50,7 +53,6 @@ function validaCPF(cpf) {
         alert("CPF inválido!");
         return false;
     }
-    return true;
    }
    
 
@@ -60,6 +62,25 @@ function validaCPF(cpf) {
     return false;
    }
 
+   let soma2 = 0;
+   for (let i = 1; i <= 10; i++) {
+    soma2 = soma2 + (cpf.charAt(i - 1) * (11 - (i - 1)));
+   }
+   console.log(soma2);
 
+   let resto2 = soma2 % 11;
+
+   if(resto2 < 2) {
+    if(cpf.charAt(10) != 0) {
+        alert("CPF inválido");
+        return false;
+    }
+   }
+
+   let digitoVerificador2 = 11 - resto;
+   if (digitoVerificador2 != cpf.charAt(10)) {
+    alert("CPF inválido")
+    return false;
+   }
    return true;
 }
